@@ -1,2 +1,4 @@
 <h1>Your projects are as follows:</h1>
-	<% Project.all.each %>
+	<% Project.all.each do |p|%>
+		<%= p.title %>
+	<% end %>
