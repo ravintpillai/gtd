@@ -1,4 +1,30 @@
 <h1>Your projects are as follows:</h1>
 	<% Project.all.each do |p|%>
-		<%= "#{p.description} #{p.urgency} #{p.value} #{p.value * p.urgency}" %>
+		<%= "#{p.description}" %>
+		<%= "\t" %>
+		<%= "#{p.urgency}" %> 
+		<%= "	#{p.value}" %>
+		<%= "	#{p.value * p.urgency}" %>
+		<br />
 	<% end %>
+	<%= bootstrap_form_for(@project, layout: :horizontal)  do |form| %>
+		<%= form.text_field :description %>
+		<%= form.number_field :urgency %>
+		<%= form.number_field :value %>
+		<%= form.submit 'Create project' %>
+	<% end %>
+
+
+
+<!-- <form action="/projects" class="new_project" id="new_project" method="post">
+  <label for="project_description">Description</label>:
+  <input id="person_first_name" name="project[description]" type="text" /><br />
+
+  <label for="project_value">Value</label>:
+  <input id="project_value" name="person[value]" type="tel" /><br />
+
+  <label for="project_urgency">Urgency</label>:
+  <input id="project_urgency" name="person[urgency]" type="tel" /><br />
+
+  <input name="commit" type="submit" value="Create Project" />
+</form> -->
